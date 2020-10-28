@@ -14,7 +14,9 @@ USER_ADAFRUIT_KEY = 'aio_ADAFRUIT_KEY'
 
 
 # ---- FEED predentido, por exemplo LAMPADA-1
-IO_FEED = 'LAMPADA-1'
+IO_FEED1 = 'LAMPADA-1'
+IO_FEED2 = 'LAMPADA-2'
+IO_FEED3 = 'LAMPADA-3'
 # Username dono do feed - geralmente o mesmo de cima
 IO_FEED_USERNAME = USER_ADAFRUIT
 
@@ -25,7 +27,9 @@ GPIO.setup(2, GPIO.OUT) # quero que meu pino GPIO02 seja output
 ##################### vou criar metodos pra usar o mqtt client e ficar ouvindo um topico
 def connected(client):
     # quando conctado, ele subscreve num topico
-    client.subscribe(IO_FEED, IO_FEED_USERNAME)
+    client.subscribe(IO_FEED1, IO_FEED_USERNAME)
+    client.subscribe(IO_FEED2, IO_FEED_USERNAME)
+    client.subscribe(IO_FEED3, IO_FEED_USERNAME)
 
 def disconnected(client):
     print('conexao fechou. fecha o programa')
@@ -36,8 +40,16 @@ def message(client, feed_id, payload):
     # Aprensentamos na sysout os dados recebidos
     print('Feed {0} novo valor recebido: {1}'.format(feed_id, payload))
 
+    if feed_id == IO_FEED1:
     # Aciona ou nao a GPIO
-    GPIO.output(2, payload == 'Ligado') # Quando usamos Ligado x Desligado no botao configurado no dashboard do adafruit, caso contrario, usar ON/OFF
+        GPIO.output(2, payload == 'Ligado') # Quando usamos Ligado x Desligado no botao configurado no dashboard do adafruit, caso contrario, usar ON/OFF
+    if feed_id == IO_FEED2:
+    # Aciona ou nao a GPIO
+        GPIO.output(3, payload == 'Ligado') # Quando usamos Ligado x Desligado no botao configurado no dashboard do adafruit, caso contrario, usar ON/OFF
+
+    if feed_id == IO_FEED3:
+    # Aciona ou nao a GPIO
+        GPIO.output(4, payload == 'Ligado') # Quando usamos Ligado x Desligado no botao configurado no dashboard do adafruit, caso contrario, usar ON/OFF
 
 #-------------------- Area de instancias
 # Cria instancia mqtt.
