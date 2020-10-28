@@ -72,7 +72,9 @@ client.loop_background()
 # Segura o script ligado, apenas ouvindo
 while True:
      time.sleep(10)
-     print ('Estado do GPIO -> ' + str(GPIO.input(2)))
+     print ('Estado do GPIO2 -> ' + str(GPIO.input(2)))
+     print ('Estado do GPIO3 -> ' + str(GPIO.input(3)))
+     print ('Estado do GPIO4 -> ' + str(GPIO.input(4)))
 
 
 
