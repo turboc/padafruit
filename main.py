@@ -24,7 +24,7 @@ IO_FEED_USERNAME = USER_ADAFRUIT
 GPIO.setmode(GPIO.BCM)  # Indica que utilizaremos o endereçamento dos GPIOS que aparecem no PINOUT e nao o numero do PINO
 GPIO.setup(2, GPIO.OUT) # quero que meu pino GPIO02 seja output
 GPIO.setup(3, GPIO.OUT) # quero que meu pino GPIO03 seja output
-GPIO.setup(3, GPIO.OUT) # quero que meu pino GPIO04 seja output
+GPIO.setup(4, GPIO.OUT) # quero que meu pino GPIO04 seja output
 
 ##################### vou criar metodos pra usar o mqtt client e ficar ouvindo um topico
 def connected(client):
